@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-public class BallController : MonoBehaviour, IBallController
+public class BallController : IBallController
 {
     private BallSettings _ballSettings;
     private GameObject _ball;
@@ -9,18 +9,24 @@ public class BallController : MonoBehaviour, IBallController
 
     public event Action OnCollide;
 
-    private void Update()
+
+    public void Initialize(BallSettings ballSettings, Vector2 position)
+    {
+        _ballSettings = ballSettings;
+
+        _ball = GameObject.Instantiate(_ballSettings.prefab, position, Quaternion.identity);
+        if(!_ball.TryGetComponent<BallCollideDetector>(out var ballCollideDetector))
+            throw new Exception($"Instantiated {_ballSettings.prefab.name} must have BallCollideDetector");
+        ballCollideDetector.OnCollide += () => { OnCollide?.Invoke(); };
+    }
+
+    public void Update()
     {
         UpdateBallVelocity();
         UpdateBallPosition();
 
         if(Input.GetKeyDown(KeyCode.W))
             Jump();
-    }
-
-    private void OnDestroy()
-    {
-        Destroy(_ball);
     }
 
     private void UpdateBallPosition()
@@ -33,18 +39,13 @@ public class BallController : MonoBehaviour, IBallController
         _ballYVelocity = Mathf.Max(_ballYVelocity + -Time.deltaTime * _ballSettings.upAcceleration, -_ballSettings.maxUpVelocity);
     }
 
-    public void Initialize(BallSettings ballSettings, Vector2 position)
-    {
-        _ballSettings = ballSettings;
-
-        _ball = Instantiate(_ballSettings.prefab, position, Quaternion.identity);
-        if(!_ball.TryGetComponent<BallCollideDetector>(out var ballCollideDetector))
-            throw new Exception($"Instantiated {_ballSettings.prefab.name} must have BallCollideDetector");
-        ballCollideDetector.OnCollide += () => { OnCollide?.Invoke(); };
-    }
-
     public void Jump()
     {
         _ballYVelocity = _ballSettings.maxUpVelocity;
+    }
+
+    public void Clear()
+    {
+        GameObject.Destroy(_ball);
     }
 }
