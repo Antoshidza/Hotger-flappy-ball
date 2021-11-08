@@ -16,6 +16,9 @@ public class GameObjectPool : IGameObjectPool
         {
             var gameObject = _pool.Dequeue();
             gameObject.SetActive(true);
+#if UNITY_EDITOR
+            gameObject.hideFlags = HideFlags.None;
+#endif
             return gameObject;
         }
         return GameObject.Instantiate(_prefab);
@@ -25,6 +28,9 @@ public class GameObjectPool : IGameObjectPool
     {
         _pool.Enqueue(obj);
         obj.SetActive(false);
+#if UNITY_EDITOR
+        obj.hideFlags = HideFlags.HideInHierarchy;
+#endif
     }
 
     public void Release(IEnumerable<GameObject> objects)
