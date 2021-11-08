@@ -31,7 +31,6 @@ public class LevelWall : MonoBehaviour
 
         StartMove();
     }
-
     private void OnDestroy()
     {
         _gameController.OnGameOver -= StopMove;
@@ -42,12 +41,10 @@ public class LevelWall : MonoBehaviour
     {
         _spriteRenderer.material.SetFloat(_speedPropertyID, value / _spriteRenderer.sprite.bounds.size.x);
     }
-
     private void StartMove()
     {
         SetSpeed(_gameController.ChoosedDifficulty.ForwardVelocity);
     }
-
     private void StopMove()
     {
         SetSpeed(0f);
@@ -58,7 +55,6 @@ public class LevelWall : MonoBehaviour
         StopMove();
         _spriteRenderer.enabled = false;
     }
-
     private void OnGameStart()
     {
         StartMove();

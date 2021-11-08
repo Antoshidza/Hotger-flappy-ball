@@ -19,7 +19,6 @@
         base.SetTimer(value);
         _duration = value;
     }
-
     public void Reset()
     {
         _timer = _duration;

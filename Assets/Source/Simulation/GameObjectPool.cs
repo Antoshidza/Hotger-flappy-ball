@@ -23,7 +23,6 @@ public class GameObjectPool : IGameObjectPool
         }
         return GameObject.Instantiate(_prefab);
     }
-
     public void Release(GameObject obj)
     {
         _pool.Enqueue(obj);
@@ -32,14 +31,12 @@ public class GameObjectPool : IGameObjectPool
         obj.hideFlags = HideFlags.HideInHierarchy;
 #endif
     }
-
     public void Release(IEnumerable<GameObject> objects)
     {
         var enumerator = objects.GetEnumerator();
         while(enumerator.MoveNext())
             Release(enumerator.Current);
     }
-
     public void Release<T>(IEnumerable<T> components)
         where T : Component
     {
@@ -47,12 +44,10 @@ public class GameObjectPool : IGameObjectPool
         while(enumerator.MoveNext())
             Release(enumerator.Current.gameObject);
     }
-
     public void SetGameObjectToPopulate(GameObject gameObject)
     {
         _prefab = gameObject;
     }
-
     public void Clear()
     {
         while(_pool.Count != 0)

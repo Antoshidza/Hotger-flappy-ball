@@ -15,10 +15,7 @@ MonoBehaviour:
   Name: Hard
   HeightRange: {x: -1, y: 4}
   ForwardVelocity: 2.33
-  BallSettings:
-    jumpVelocity: 0.025
-    maxVerticalVelocity: 1
-    verticalStartAcceleration: 0.05
   ObstacleSpawnFrequency: 0.75
-  VerticalAccelerationIncreaseInterval: 10
-  VerticalAccelerationIncreaseStep: 0.01
+  VerticalStartVelocity: 0.5
+  VerticalVelocityIncreaseInterval: 5
+  VerticalVelocityIncreaseStep: 0.3

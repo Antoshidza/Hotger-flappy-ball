@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour, IGameController
     private IObstacleController _obstacleController;
     private IGameSettings _gameSettings;
     private LoopedTimer _obstacleSpawnTimer;
-    private LoopedTimer _verticalAccelerationIncreaseTimer;
+    private LoopedTimer _verticalVelocityIncreaseTimer;
     private LevelWall.Factory _levelWallsFactory;
 
     public event Action OnGameStart;
@@ -51,10 +51,10 @@ public class GameController : MonoBehaviour, IGameController
         if(_gamesCount++ == 0)
             ConfigureGame();
 
-        _ballController.Configure(_choosedDifficulty.BallSettings);
-        _ballController.Show();
-        _ballController.Reset();
         _ballController.SetBallPosition(_ballSpawnPosition);
+        _ballController.SetVerticalVelocity(_choosedDifficulty.VerticalStartVelocity);
+        _ballController.SetVerticalDirection(-1);
+        _ballController.Show();
 
         SetLevelHeight();
     }
@@ -65,16 +65,14 @@ public class GameController : MonoBehaviour, IGameController
 
         Reset();
     }
-
     private void Reset()
     {
         _obstacleController.Reset();
         _ballController.Hide();
 
         _obstacleSpawnTimer.Reset();
-        _verticalAccelerationIncreaseTimer.Reset();
+        _verticalVelocityIncreaseTimer.Reset();
     }
-
     //we want configure game after "Inject" phase because there can be cases when something still not initialized well
     private void ConfigureGame()
     {
@@ -94,21 +92,19 @@ public class GameController : MonoBehaviour, IGameController
         _obstacleSpawnTimer = new LoopedTimer(1f / _choosedDifficulty.ObstacleSpawnFrequency);
         _obstacleSpawnTimer.OnExpired += () => { _obstacleController.Spawn(new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0f)).x, UnityEngine.Random.Range(_choosedDifficulty.HeightRange.x, _choosedDifficulty.HeightRange.y))); };
 
-        //create vertical ACCELERATION increase timer
-        _verticalAccelerationIncreaseTimer = new LoopedTimer(_choosedDifficulty.VerticalAccelerationIncreaseInterval);
-        _verticalAccelerationIncreaseTimer.OnExpired += () => { _ballController.ChangeAcceleration(_choosedDifficulty.VerticalAccelerationIncreaseStep); };
+        //create vertical velocity increase timer
+        _verticalVelocityIncreaseTimer = new LoopedTimer(_choosedDifficulty.VerticalVelocityIncreaseInterval);
+        _verticalVelocityIncreaseTimer.OnExpired += () => { _ballController.ChangeVerticalVelocity(_choosedDifficulty.VerticalVelocityIncreaseStep); };
 
         //spawn level up/down walls
         _upWall = _levelWallsFactory.Create().gameObject;
         _downWall = _levelWallsFactory.Create().gameObject;
     }
-
     //we don't want to do anything else then just cache choosed difficulty, because it shouldn't be applyed during running game, but only on GameStart
     public void SetDifficulty(GameDifficulty difficulty)
     {
         _choosedDifficulty = difficulty;
     }
-
     private void SetLevelHeight()
     {
         _upWall.transform.position = new Vector3(0f, _choosedDifficulty.HeightRange.x, 0f);
@@ -126,9 +122,6 @@ public class GameController : MonoBehaviour, IGameController
         _obstacleController.Update(Time.deltaTime * -_choosedDifficulty.ForwardVelocity);
         _obstacleSpawnTimer.Update(Time.deltaTime);
 
-        _verticalAccelerationIncreaseTimer.Update(Time.deltaTime);
-
-        if(Input.GetKeyDown(KeyCode.W)) //TODO: Move it to UI button
-            _ballController.Jump();
+        _verticalVelocityIncreaseTimer.Update(Time.deltaTime);
     }
 }

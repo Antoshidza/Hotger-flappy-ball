@@ -23,19 +23,16 @@ public class ObstacleController : IObstacleController
 #endif
         _bounds = new Vector2(left, right);
     }
-
     public void SetObstacle(GameObject obstaclePrefab)
     {
         _obstaclePool.SetGameObjectToPopulate(obstaclePrefab);
     }
-
     public void Spawn(Vector2 position)
     {
         var obstacleTransform = _obstaclePool.Get().transform;
         obstacleTransform.position = position;
         _obstacles.Add(obstacleTransform);
     }
-
     public void Update(float delta)
     {
         var counter = 0;
@@ -57,7 +54,6 @@ public class ObstacleController : IObstacleController
                 counter++;
         }
     }
-
     public void Reset()
     {
         _obstaclePool.Release(_obstacles);

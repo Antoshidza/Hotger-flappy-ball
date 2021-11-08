@@ -43,13 +43,13 @@ public class Menu : MonoBehaviour
         for(int i = 0; i < _gameSettings.GameDifficulties.Length; i++)
             _difficultiesDropdown.options.Add(new Dropdown.OptionData(_gameSettings.GameDifficulties[i].name));
         _difficultiesDropdown.onValueChanged.AddListener(SetDifficulty);
+        _difficultiesDropdown.value = 0; //select 1st difficulty
     }
 
     private void SetDifficulty(int index)
     {
         _gameController.SetDifficulty(_gameSettings.GameDifficulties[index]);
     }
-
     private void SetOpen(bool value)
     {
         _menuRoot.SetActive(value);

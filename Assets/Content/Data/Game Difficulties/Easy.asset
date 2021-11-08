@@ -15,10 +15,7 @@ MonoBehaviour:
   Name: Easy
   HeightRange: {x: -4, y: 4}
   ForwardVelocity: 2.33
-  BallSettings:
-    jumpVelocity: 0.025
-    maxVerticalVelocity: 1
-    verticalStartAcceleration: 0.05
   ObstacleSpawnFrequency: 0.75
-  VerticalAccelerationIncreaseInterval: 15
-  VerticalAccelerationIncreaseStep: 0.01
+  VerticalStartVelocity: 1.5
+  VerticalVelocityIncreaseInterval: 15
+  VerticalVelocityIncreaseStep: 0.1

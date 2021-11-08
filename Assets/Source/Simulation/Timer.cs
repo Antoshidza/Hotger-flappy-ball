@@ -10,7 +10,6 @@ public class Timer
     {
         _timer = value;
     }
-
     public virtual void Update(float delta)
     {
         _timer -= delta;
