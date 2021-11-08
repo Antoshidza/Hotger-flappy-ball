@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   Name: Medium
-  HeightRange: {x: -1, y: 4}
+  HeightRange: {x: -2.5, y: 4}
   ForwardVelocity: 2.33
   BallSettings:
-    prefab: {fileID: 561974742841136141, guid: 70ecf45b9c456f4468089e218e1d7f94, type: 3}
-    maxUpVelocity: 0.025
-    upAcceleration: 0.05
-  ObstacleSettings:
-    ObstaclePrefab: {fileID: 6068696893761042166, guid: af6e952454ac8f342a925d030438d838,
-      type: 3}
-    SpawnFrequency: 0.5
+    jumpVelocity: 0.025
+    maxVerticalVelocity: 1
+    verticalStartAcceleration: 0.05
+  ObstacleSpawnFrequency: 0.75
+  VerticalAccelerationIncreaseInterval: 5
+  VerticalAccelerationIncreaseStep: 0.01

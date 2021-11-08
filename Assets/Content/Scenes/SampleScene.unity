@@ -438,16 +438,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 776554251}
     m_Modifications:
-    - target: {fileID: 617248894009608168, guid: aed8e36ca69cf8f4585c5cbe7b352151,
-        type: 3}
-      propertyPath: m_text
-      value: start
-      objectReference: {fileID: 0}
-    - target: {fileID: 617248894009608168, guid: aed8e36ca69cf8f4585c5cbe7b352151,
-        type: 3}
-      propertyPath: m_fontStyle
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 617248894258188780, guid: aed8e36ca69cf8f4585c5cbe7b352151,
         type: 3}
       propertyPath: m_Name

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: DI_Settings
   m_EditorClassIdentifier: 
   _gameSettings: {fileID: 11400000, guid: c8d77e3437fb83c4b959e052b07e12a4, type: 2}
+  _levelWallPrefab: {fileID: 7881805469049320286, guid: 7cc8cafe8a2003745b00026c3927a5ec,
+    type: 3}
