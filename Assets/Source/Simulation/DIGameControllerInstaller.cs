@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class DIGameControllerInstaller : MonoInstaller
+namespace Core
 {
-    [SerializeField]
-    private GameController _gameController;
-
-    public override void InstallBindings()
+    public class DIGameControllerInstaller : MonoInstaller
     {
-        Container.Bind<IGameController>().To<GameController>().FromInstance(_gameController).AsSingle();
+        [SerializeField]
+        private GameController _gameController;
+
+        public override void InstallBindings()
+        {
+            Container.Bind<IGameController>().To<GameController>().FromInstance(_gameController).AsSingle();
+        }
     }
 }

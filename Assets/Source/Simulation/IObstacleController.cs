@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 
-public interface IObstacleController
+namespace Core
 {
-    void Update(float delta);
-    void SetObstacle(GameObject obstaclePrefab);
-    void SetHorizontalBounds(float left, float right);
-    void Spawn(Vector2 position);
-    void Reset();
+    public interface IObstacleController
+    {
+        void Update(float delta);
+        void SetObstacle(GameObject obstaclePrefab);
+        void SetHorizontalBounds(float left, float right);
+        void Spawn(Vector2 position);
+        void Reset();
+    }
+
 }

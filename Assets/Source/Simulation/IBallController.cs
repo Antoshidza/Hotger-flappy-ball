@@ -1,17 +1,20 @@
 ﻿using System;
 using UnityEngine;
 
-public interface IBallController
+namespace Core
 {
-    event Action OnCollide;
+    public interface IBallController
+    {
+        event Action OnCollide;
 
-    void Update(float deltaTime);
-    void Clear();
-    void SpawnBall(GameObject ballPrefab);
-    void SetBallPosition(Vector2 position);
-    void SetVerticalDirection(int direction);
-    void SetVerticalVelocity(float value);
-    void ChangeVerticalVelocity(float value);
-    void Hide();
-    void Show();
+        void Update(float deltaTime);
+        void Clear();
+        void SpawnBall(GameObject ballPrefab);
+        void SetBallPosition(Vector2 position);
+        void SetVerticalDirection(int direction);
+        void SetVerticalVelocity(float value);
+        void ChangeVerticalVelocity(float value);
+        void Hide();
+        void Show();
+    }
 }

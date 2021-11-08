@@ -1,26 +1,29 @@
-﻿public class LoopedTimer : Timer
+﻿namespace Core
 {
-    private float _duration;
-
-    public int Loops { get; private set; }
-
-    public LoopedTimer(float duration)
+    public class LoopedTimer : Timer
     {
-        _duration = duration;
-        OnExpired += () => 
-        { 
+        private float _duration;
+
+        public int Loops { get; private set; }
+
+        public LoopedTimer(float duration)
+        {
+            _duration = duration;
+            OnExpired += () =>
+            {
+                _timer = _duration;
+                Loops++;
+            };
+        }
+
+        public override void SetTimer(float value)
+        {
+            base.SetTimer(value);
+            _duration = value;
+        }
+        public void Reset()
+        {
             _timer = _duration;
-            Loops++;
-        };
-    }
-
-    public override void SetTimer(float value)
-    {
-        base.SetTimer(value);
-        _duration = value;
-    }
-    public void Reset()
-    {
-        _timer = _duration;
+        }
     }
 }

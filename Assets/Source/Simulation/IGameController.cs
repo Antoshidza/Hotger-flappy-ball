@@ -1,14 +1,17 @@
 ﻿using System;
 
-public interface IGameController
+namespace Core
 {
-    event Action OnGameStart;
-    event Action OnGameOver;
+    public interface IGameController
+    {
+        event Action OnGameStart;
+        event Action OnGameOver;
 
-    GameDifficulty ChoosedDifficulty { get; }
-    int Score { get; }
-    int GamesCount { get; }
+        GameDifficulty ChoosedDifficulty { get; }
+        int Score { get; }
+        int GamesCount { get; }
 
-    void StartGame();
-    void SetDifficulty(GameDifficulty difficulty);
+        void StartGame();
+        void SetDifficulty(GameDifficulty difficulty);
+    }
 }

@@ -1,20 +1,23 @@
 ﻿using System;
 
-public class Timer
+namespace Core
 {
-    protected float _timer;
-
-    public event Action OnExpired;
-
-    public virtual void SetTimer(float value)
+    public class Timer
     {
-        _timer = value;
-    }
-    public virtual void Update(float delta)
-    {
-        _timer -= delta;
+        protected float _timer;
 
-        if(_timer <= 0)
-            OnExpired?.Invoke();
+        public event Action OnExpired;
+
+        public virtual void SetTimer(float value)
+        {
+            _timer = value;
+        }
+        public virtual void Update(float delta)
+        {
+            _timer -= delta;
+
+            if(_timer <= 0)
+                OnExpired?.Invoke();
+        }
     }
 }
