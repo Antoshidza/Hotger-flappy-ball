@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c399db22bd5c6f94c8138b6da70bce25, type: 3}
+  m_Name: Hard
+  m_EditorClassIdentifier: 
+  Name: Hard
+  HeightRange: {x: -1, y: 4}
+  ForwardVelocity: 2.33
+  BallSettings:
+    prefab: {fileID: 561974742841136141, guid: 70ecf45b9c456f4468089e218e1d7f94, type: 3}
+    maxUpVelocity: 0.025
+    upAcceleration: 0.05
+  ObstacleSettings:
+    ObstaclePrefab: {fileID: 6068696893761042166, guid: af6e952454ac8f342a925d030438d838,
+      type: 3}
+    SpawnFrequency: 0.5

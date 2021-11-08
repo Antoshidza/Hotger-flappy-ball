@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c399db22bd5c6f94c8138b6da70bce25, type: 3}
-  m_Name: Easy
+  m_Script: {fileID: 11500000, guid: ec6d07c65610dbc48b2316567fd49ba4, type: 3}
+  m_Name: DI_Settings
   m_EditorClassIdentifier: 
-  ballSettings:
-    prefab: {fileID: 561974742841136141, guid: 70ecf45b9c456f4468089e218e1d7f94, type: 3}
-    maxUpVelocity: 0.025
-    upAcceleration: 0.05
-    forwardVelocity: 0.075
+  _gameSettings: {fileID: 11400000, guid: c8d77e3437fb83c4b959e052b07e12a4, type: 2}

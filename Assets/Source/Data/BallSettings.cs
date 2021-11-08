@@ -4,11 +4,9 @@
 public struct BallSettings
 {
     [SerializeField]
-    public GameObject prefab;
+    public float jumpVelocity;
     [SerializeField]
-    public float maxUpVelocity;
+    public float maxVerticalVelocity;
     [SerializeField]
-    public float upAcceleration;
-    [SerializeField]
-    public float forwardVelocity;
+    public float verticalStartAcceleration;
 }
