@@ -20,8 +20,8 @@
 * World
   * [LevelWall](https://github.com/Antoshidza/Hotger-flappy-ball/blob/development/Assets/Source/Presentation/World/LevelWall.cs): Контролирует отображение игровых стен.
 
-# Data
+# Data (ScriptableObject)
 Включает в себя классы для настройки игры и графического отображения:
-* [GameDifficulty](https://github.com/Antoshidza/Hotger-flappy-ball/blob/development/Assets/Source/Data/GameDifficulty.cs): ScriptableObject. Содержит настройки сложности игры (стартовая скорость, интервал увеличения скорости, шаг увелечения скорости, высота стен, частота возникновения препятствий, и т.д.)
+* [GameDifficulty](https://github.com/Antoshidza/Hotger-flappy-ball/blob/development/Assets/Source/Data/GameDifficulty.cs): Содержит настройки сложности игры (стартовая скорость, интервал увеличения скорости, шаг увелечения скорости, высота стен, частота возникновения препятствий, и т.д.)
 * [GameSettings](https://github.com/Antoshidza/Hotger-flappy-ball/blob/development/Assets/Source/Data/GameSettings.cs): Содержит перечисление GameDifficulty доступных для игры и другие настройки, такие как префабы игровых объектов.
 * [DISettings](https://github.com/Antoshidza/Hotger-flappy-ball/blob/development/Assets/Source/Data/DISettings.cs): Данные для биндинга Zenject DI.
